@@ -1,10 +1,9 @@
-function a(menuSource) {
+function a(menuSource, renderer = 'text') {
     const fs = require('fs');
 
     const menuRaw = fs.readFileSync(menuSource, {encoding: 'utf8'});
 
     const orderDate = menuRaw.match('MENÙ DI ([A-ZÌ 0-9]+)');
-    out = `data di oggi: ${orderDate[1].trim()}\n`;
 
     menuLines = menuRaw.split("\n");
     const defaultPrimiPrice = '5,50';
@@ -63,7 +62,7 @@ function a(menuSource) {
                     primiSpecialPrice = price || matchedLinePrimiSpecial[2];
                     blocks.primi.isSpecial = true;
 
-                    primi.push(`##### ${primiDesc.trim()}: ${primiSpecialPrice}`);
+                    primi.push(`${primiDesc.trim()}: ${primiSpecialPrice}`);
             }
 
             let matchedLinePrimiStandard = line.match(/^.? ([A-Za-z ,\(\)]+) EURO|^.? ([A-Za-z ,\(\)]+)/);
@@ -75,7 +74,7 @@ function a(menuSource) {
 
                     primiDesc = matchedLinePrimiStandard[1] || matchedLinePrimiStandard[2];
 
-                primi.push(`àààà ${primiDesc.trim()}: ${defaultPrimiPrice}`);
+                primi.push(`${primiDesc.trim()}: ${defaultPrimiPrice}`);
             }
 
             const secondiHeader = line.match(/^SECONDI/);
@@ -90,7 +89,7 @@ function a(menuSource) {
                 && lineIndex > blocks.secondi.startIndex) {
                     
                     const secondo = matchedLineSecondiSpecial[1].replace('EURO','').trim(); 
-                    secondi.push(`## ${secondo}: ${matchedLineSecondiSpecial[2]}`);
+                    secondi.push(`${secondo}: ${matchedLineSecondiSpecial[2]}`);
                     secondiSpecialLastRow = index;
                     blocks.secondi.isSpecial = true;
             }
@@ -102,7 +101,7 @@ function a(menuSource) {
                 && !blocks.secondi.isSpecial) {
 
                 const secondo = matchedLineSecondi[1].replace('EURO','').trim(); 
-                secondi.push(`# ${secondo}: ${defaultSecondiPrice}`);
+                secondi.push(`${secondo}: ${defaultSecondiPrice}`);
             }
 
             const dolciHeader = line.match(/^[^\w]*(?:Dolci|TORTE)/);
@@ -117,17 +116,62 @@ function a(menuSource) {
                 && (lineIndex > blocks.primi.startIndex  || !primiHeader)){
 
                 const dolce = matchedLineDolci[1].replace('EURO','').trim(); 
-                dolci.push(`ddd ${dolce}: ${defaultDolcePrice}`);
+                dolci.push(`${dolce}: ${defaultDolcePrice}`);
             }
     });
 
-    out += " *** PRIMI ***\n";
-    out += primi.join("\n");
-    out += "\n *** SECONDI ***\n";
-    out += secondi.join("\n");
-    out += "\n *** DOLCI ***\n";
-    out += dolci.join("\n");
+    const menu = {
+        date: orderDate[1].trim()
+    }
+
+    if (renderer == 'text') {
+        out = `data di oggi: ${orderDate[1].trim()}\n`;
+        out += " *** PRIMI ***\n";
+        out += primi.join("\n");
+        out += "\n *** SECONDI ***\n";
+        out += secondi.join("\n");
+        out += "\n *** DOLCI ***\n";
+        out += dolci.join("\n");
+
+    } else if(renderer == 'md') {
+
+        const marked = require('marked');
+        const TerminalRenderer = require('marked-terminal');
+        
+        marked.setOptions({
+        // Define custom renderer
+        renderer: new TerminalRenderer()
+        });
+
+
+
+        out = `# BAR MILANO #
+#### MENU DI ${menu.date} ####
+
+---
+### *PRIMI*
+${primi.map(i => {
+    const d = i.replace('- ','');
+    return `- ${d}\n`;
+}).join('\n')}
+
+---
+### *SECONDI*
+${secondi.map(i => {
+    i.replace('-','');
+    return `- ${i}\n`;
+}).join('\n')}
+    
+---
+### *DOLCI*
+${dolci.map(i => {
+    i.replace('-','');
+    return `- ${i}\n`;
+}).join('\n')}`
+
+        out = marked(out);
+    }
     return out;
-};
+}
 
 module.exports = a;
