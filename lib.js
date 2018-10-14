@@ -48,16 +48,11 @@ function a(menuSource) {
             const primiHeader = line.match(/^[^\w]*PRIMI DA EURO ([\d,]+)/);
             if (primiHeader) {
                 blocks.primi.startIndex = lineIndex;
-        //        primiBlockStartRow = index;
                 price = primiHeader[1];
             }
-
-    //        let matchedLinePrimiSpecial = line.match(/^[^\w]+([A-Z ,]+)EURO ([\d,]+)$/);
-    let matchedLinePrimiSpecial 
-
-    
-    = line.match(/^([^\w]+[A-Z, ]{6,}[a-z\(\), ]+)EURO ([\d,]+)|([^\w]+[A-Z, Ù]{6,}[a-z\(\), ]*)/);
-    //= line.match(/^([^\w]+[A-Z ,]{3,}[\(\)\w ]+)(?: EURO )?([\d,]+)$/);
+        
+            let matchedLinePrimiSpecial 
+                = line.match(/^([^\w]+[A-Z, ]{6,}[a-z\(\), ]+)EURO ([\d,]+)|([^\w]+[A-Z, Ù]{6,}[a-z\(\), ]*)/);
 
             if (matchedLinePrimiSpecial 
                 && lineIndex > 5
