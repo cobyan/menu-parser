@@ -28,7 +28,7 @@ if (!validateParamDate(date)) {
 }
 
 fa = require('./lib');
-const formattedMenu = fa('./menu-' + date + '.txt', program.format);
+const formattedMenu = fa('./sampleMenu/menu-' + date + '.txt', program.format);
 if(formattedMenu) {
     console.log(formattedMenu);
 }
