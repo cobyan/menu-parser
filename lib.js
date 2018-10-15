@@ -12,13 +12,9 @@ function a(menuSource, renderer = 'text') {
     const orderDate = menuRaw.match('MENÙ DI ([A-ZÌ 0-9]+)');
 
     menuLines = menuRaw.split("\n");
-    const defaultPrimiPrice = '5,50';
-    const defaultSecondiPrice = '7,50';
-    const defaultDolcePrice = '4,50';
-
-    let primiBlockStartRow = 9999;
-    let secondiBlockStartRow = 9999;
-    let secondiSpecialLastRow = 9999;
+    const defaultPrimiPrice = '5,20';
+    const defaultSecondiPrice = '7,20';
+    const defaultDolcePrice = '4,20';
 
     let price;
 
@@ -68,7 +64,7 @@ function a(menuSource, renderer = 'text') {
                     primiSpecialPrice = price || matchedLinePrimiSpecial[2];
                     blocks.primi.isSpecial = true;
 
-                    primi.push(`${primiDesc.trim()}: ${primiSpecialPrice}`);
+                    primi.push(`${primiDesc.trim()}: ${primiSpecialPrice.replace(",50", ",20")}`);
             }
 
             let matchedLinePrimiStandard = line.match(/^.? ([A-Za-z ,\(\)]+) EURO|^.? ([A-Za-z ,\(\)]+)/);
