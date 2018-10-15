@@ -1,7 +1,13 @@
 function a(menuSource, renderer = 'text') {
     const fs = require('fs');
 
-    const menuRaw = fs.readFileSync(menuSource, {encoding: 'utf8'});
+    let menuRaw;
+    try {
+        menuRaw = fs.readFileSync(menuSource, {encoding: 'utf8'});
+    } catch(e) {
+        console.log('Menu not found');
+        return;
+    }
 
     const orderDate = menuRaw.match('MENÙ DI ([A-ZÌ 0-9]+)');
 
