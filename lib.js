@@ -1,4 +1,4 @@
-function a(menuSource, renderer = 'text') {
+function parser(menuSource, renderer = 'text') {
     const fs = require('fs');
 
     let menuRaw;
@@ -28,9 +28,6 @@ function a(menuSource, renderer = 'text') {
         secondi: {
             startIndex: 9999,
             isSpecial: false,
-        },
-        secondi_special: {
-
         },
         dolci: {
             startIndex: 9999,
@@ -179,4 +176,4 @@ ${dolci.map(i => {
     return out;
 }
 
-module.exports = a;
+module.exports = parser;

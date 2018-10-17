@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 colors = require('colors');
 jsdiff = require('diff');

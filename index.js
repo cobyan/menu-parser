@@ -1,8 +1,9 @@
+#!/usr/bin/env node
 var program = require('commander');
  
 program
   .version('0.1.0', '-v, --version')
-  .usage('[options] <date>')
+  .usage('[options] [date]')
   .option('-f, --format <format>', 'Output format (markdown or text)', /^md|text$/, 'text')
   .parse(process.argv);
 
@@ -29,8 +30,8 @@ if (!validateParamDate(date)) {
     return;
 }
 
-fa = require('./lib');
-const formattedMenu = fa('./sampleMenu/menu-' + date + '.txt', program.format);
+parser = require('./lib');
+const formattedMenu = parser('./sampleMenu/menu-' + date + '.txt', program.format);
 if(formattedMenu) {
     console.log(formattedMenu);
 }
