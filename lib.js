@@ -9,8 +9,6 @@ function a(menuSource, renderer = 'text') {
         return;
     }
 
-    const orderDate = menuRaw.match('MENÙ DI ([A-ZÌ 0-9]+)');
-
     menuLines = menuRaw.split("\n");
     const defaultPrimiPrice = '5,20';
     const defaultSecondiPrice = '7,20';
@@ -38,6 +36,7 @@ function a(menuSource, renderer = 'text') {
             startIndex: 9999,
         }
     };
+    let orderDate;
     menuLines
         .splice(0)
         .map((line, index) => {    
@@ -46,7 +45,11 @@ function a(menuSource, renderer = 'text') {
             blocks.primi.isSpecial = false;
             blocks.secondi.isSpecial = false;
 
-            const primiHeader = line.match(/^[^\w]*PRIMI DA EURO ([\d,]+)/);
+            if(!orderDate) {
+                orderDate = line.match(/^([^\w]*MENÙ DI ([A-ZÌ 0-9]+).*)$/);
+            }
+
+            const primiHeader = line.match(/^[^\w]*PRIMI DA (?:EURO|€) ([\d,]+)/);
             if (primiHeader) {
                 blocks.primi.startIndex = lineIndex;
                 price = primiHeader[1];
@@ -111,7 +114,7 @@ function a(menuSource, renderer = 'text') {
                 blocks.dolci.startIndex = lineIndex;
             }
 
-            let matchedLineDolci = line.match(/^.? ([\S ]+)/);
+            let matchedLineDolci = line.match(/^[^\w]*([\S ]+)/);
             if (matchedLineDolci 
                 && lineIndex > blocks.dolci.startIndex
                 && lineIndex > blocks.secondi.startIndex
@@ -123,11 +126,11 @@ function a(menuSource, renderer = 'text') {
     });
 
     const menu = {
-        date: orderDate[1].trim()
+        date: orderDate[2].trim()
     }
 
     if (renderer == 'text') {
-        out = `data di oggi: ${orderDate[1].trim()}\n`;
+        out = `${orderDate[0].trim()}\n`;
         out += " *** PRIMI ***\n";
         out += primi.join("\n");
         out += "\n *** SECONDI ***\n";

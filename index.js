@@ -6,7 +6,9 @@ program
   .option('-f, --format <format>', 'Output format (markdown or text)', /^md|text$/, 'text')
   .parse(process.argv);
 
-const date = program.args[0];
+const today = new Date();
+const dateToday = `${String(today.getFullYear()).substring(2)}${+today.getMonth() +1}${today.getUTCDate()}`;
+const date = program.args[0] || dateToday;
 
 validateParamDate = (date) => {
     const year = date.substring(0,2);

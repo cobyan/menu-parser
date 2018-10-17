@@ -7,7 +7,7 @@ chalk = require('chalk');
 menus = [
     {
         filename: './sampleMenu/menu-181015.txt',
-        expected: `data di oggi: LUNEDÌ 15 OTTOBRE
+        expected: `🎡 MENÙ DI LUNEDÌ 15 OTTOBRE 🎠
  *** PRIMI ***
 - GNOCCHI FATTI IN CASA ALLA BOSCAIOLA (funghi, salsiccia e pomodoro): 7,20
 - RAVIOLI DI MAGRO CON BURRO E SALVIA: 6,20
@@ -27,7 +27,7 @@ Macedonia: 4,20`
     },
     {
         filename: './sampleMenu/menu-181012.txt',
-        expected: `data di oggi: VENERDÌ 12 OTTOBRE
+        expected: `🤗 MENÙ DI VENERDÌ 12 OTTOBRE 🤗
  *** PRIMI ***
 🦐 RISO VENERE CON ZUCCHINE, SALMONE E GAMBERI: 7,20
 - ORECCHIETTE CON POMODORINI, FUNGHI E SALSICCIA: 6,20
@@ -47,7 +47,7 @@ Macedonia: 4,20`
     },
     {
         filename: './sampleMenu/menu-181011.txt',
-        expected: `data di oggi: GIOVEDÌ 11 OTTOBRE
+        expected: `MENÙ DI GIOVEDÌ 11 OTTOBRE
  *** PRIMI ***
 🍷 RISOTTO SMERALDO (con spinaci e pancetta): 6,20
 🍷 PENNE ALLA PUTTANESCA: 6,20
@@ -61,11 +61,14 @@ Roast-beef all’inglese: 7,20
 Torta salata con prosciutto cotto, spinaci e mozzarella: 7,20
 Frittata con verdure miste e parmigiano: 7,20
  *** DOLCI ***
+Torta di mele: 4,20
+Cheescake ai frutti di bosco: 4,20
+Cheescake all’oreo: 4,20
 Macedonia: 4,20`
     },
     {
         filename: './sampleMenu/menu-181010.txt',
-        expected: `data di oggi: MERCOLEDÌ 10 OTTOBRE
+        expected: `🍔 MENÙ DI MERCOLEDÌ 10 OTTOBRE 🍔
  *** PRIMI ***
 - RISOTTO ALLA MONZESE (zafferano e salsiccia): 6,20
 - RAVIOLI DI CARNE CON SUGO DI BRASATO: 6,20
@@ -90,7 +93,7 @@ Macedonia: 4,20`
     },
     {
         filename: './sampleMenu/menu-181009.txt',
-        expected: `data di oggi: MARTEDÌ 9 OTTOBRE
+        expected: `MENÙ DI MARTEDÌ 9 OTTOBRE
  *** PRIMI ***
 🍅SPAGHETTI CACIO E PEPE: 6,20
 🍅RISOTTO CON PERE E TALEGGIO: 6,20
@@ -113,7 +116,7 @@ Macedonia: 4,20`
     },
     {
         filename: './sampleMenu/menu-181008.txt',
-        expected: `data di oggi: LUNEDÌ 8 OTTOBRE
+        expected: `🍒 MENÙ DI LUNEDÌ 8 OTTOBRE 🍒
  *** PRIMI ***
 - RISOTTO CON CAVOLO VIOLETTO, MELE, NOCI E ACETO BALSAMICO: 6,20
 - TAGLIATELLE DI PASTA FRESCA AL RAGÙ: 6,20
@@ -133,7 +136,7 @@ Macedonia: 4,20`
     },
     {
         filename: './sampleMenu/menu-181005.txt',
-        expected: `data di oggi: VENERDÌ 5 OTTOBRE
+        expected: `🦐 MENÙ DI VENERDÌ 5 OTTOBRE 🦐
  *** PRIMI ***
 - ORECCHIETTE DI PASTA FRESCA CON VONGOLE, PESTO E POMODORINI: 7,20
 * SPAGHETTI ALLA MEDITERRANEA CON TONNO, POMODORINI, CAPPERI, OLIVE E RUCOLA: 6,20
@@ -153,7 +156,7 @@ Macedonia: 4,20`
     },
     {
         filename: './sampleMenu/menu-181004.txt',
-        expected: `data di oggi: GIOVEDÌ 4 OTTOBRE
+        expected: `🎃 MENÙ DI GIOVEDÌ 4 OTTOBRE 🎃
  *** PRIMI ***
 - RISOTTO CON CACIO E PEPE: 6,20
 - ZUPPA DI FAVE E CICORIA: 6,20
@@ -173,7 +176,7 @@ Macedonia: 4,20`
     },
     {
         filename: './sampleMenu/menu-181003.txt',
-        expected: `data di oggi: MERCOLEDÌ 3 OTTOBRE
+        expected: `🍅 MENÙ DI MERCOLEDÌ 3 OTTOBRE 🍅
  *** PRIMI ***
 * RISOTTO CON FUNGHI E PORCINI: 6,20
 * ZUPPA DI LENTICCHIE CON CROSTINI DI PANE: 6,20
@@ -192,7 +195,7 @@ Macedonia: 4,20`
     },
     {
         filename: './sampleMenu/menu-181002.txt',
-        expected: `data di oggi: MARTEDÌ 2 OTTOBRE
+        expected: `🌰 MENÙ DI MARTEDÌ 2 OTTOBRE 🌰
  *** PRIMI ***
 - RISOTTO CON RADICCHIO E SCAMORZA: 6,20
 - GNOCCHI FATTI IN CASA CON POMODORO: 6,20
@@ -212,7 +215,7 @@ Macedonia: 4,20`
     },
     {
         filename: './sampleMenu/menu-181001.txt',
-        expected: `data di oggi: LUNEDÌ 1 OTTOBRE
+        expected: `☔️ MENÙ DI LUNEDÌ 1 OTTOBRE ☔️
  *** PRIMI ***
 - GNOCCHI FATTI IN CASA AI QUATTRO FORMAGGI CON NOCI: 7,20
 - MEZZE MANICHE ALLA BOSCAIOLA (salsiccia, funghi, pomodoro): 6,20
@@ -231,6 +234,29 @@ Omelettes con carciofi, mozzarella e prosciutto cotto: 7,20
  *** DOLCI ***
 Macedonia: 4,20`
     },
+    {
+        filename: './sampleMenu/menu-181017.txt',
+        expected: `🎡🎃 MENÙ DI MERCOLEDÌ 17 OTTOBRE 🎃🎡
+ *** PRIMI ***
+- ORECCHIETTE DI PASTA FRESCA CON BROCCOLI, PANCETTA E POMODORINI: 6,20
+- RISOTTO CON PERE E TALEGGIO: 6,20
+- ZUPPA DI CECI: 6,20
+- LASAGNE CON PESTO, PATATE E FAGIOLINI: 6,20
+Mezze Maniche al pomodoro e basilico: 5,20
+Orzo alla Norma: 5,20
+ *** SECONDI ***
+Melanzane ripiene con pomodorini, scamorza, uova e parmigiano: 7,20
+Petto di pollo alla griglia: 7,20
+Bistecca di roast-beef ai ferri: 7,20
+Arrosto di vitello: 7,20
+Frittata con zucchine e mozzarella: 7,20
+Torta salata con spinaci, prosciutto cotto, mozzarella, uova e mascarpone: 7,20
+ *** DOLCI ***
+Torta Oreo: 4,20
+Torta Rocher: 4,20
+Torta Vegana con mele e lamponi: 4,20
+Macedonia: 4,20`
+    }
 ]
 
 let failed = 0
