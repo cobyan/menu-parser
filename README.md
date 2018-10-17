@@ -1,5 +1,5 @@
 # BAR MILANO MENU PARSER #
-Questo script interpreta un menu letto da un file di testo e ne stampa il contenuto normalizzato.
+Questo script interpreta un menu letto da un file di testo e ne stampa il contenuto normalizzato in formato testo o markdown.
 
 ## Install
 ```bash
@@ -12,7 +12,7 @@ npm install && npm link
 ```bash
 menu [[options][date]]
 ```
-dove `<date>` è un codice data nel formato YYMMDD (i.e. 181013), che corrisponde alla data del menu che si desidera visualizzare, con default a data di oggi.
+dove `date` è un codice data nel formato YYMMDD (i.e. 181013), che corrisponde alla data del menu che si desidera visualizzare, con default a data di oggi.
 
 ## Options
 | Option | Values | Default | Description |
