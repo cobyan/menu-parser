@@ -127,12 +127,12 @@ function parser(menuSource, renderer = 'text') {
     }
 
     if (renderer == 'text') {
-        out = `${orderDate[0].trim()}\n`;
-        out += " *** PRIMI ***\n";
+        out = `${orderDate[0].trim()}\n\n`;
+        out += " *** PRIMI ***\n\n";
         out += primi.join("\n");
-        out += "\n *** SECONDI ***\n";
+        out += "\n\n *** SECONDI ***\n\n";
         out += secondi.join("\n");
-        out += "\n *** DOLCI ***\n";
+        out += "\n\n *** DOLCI ***\n\n";
         out += dolci.join("\n");
 
     } else if(renderer == 'md') {
