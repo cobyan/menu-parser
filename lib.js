@@ -53,7 +53,7 @@ function parser(menuSource, renderer = 'text') {
             }
         
             let matchedLinePrimiSpecial 
-                = line.match(/^([^\w]+[A-Z, ]{6,}[a-z\(\), ]+)EURO ([\d,]+)|([^\w]+[A-Z, Ù]{6,}[a-z\(\), ]*)/);
+                = line.match(/^([^\w]+[A-Z, “”]{6,}[a-z\(\), “”]+)EURO ([\d,]+)|([^\w]+[A-Z, Ù“”]{6,}[a-z\(\), ]*)/);
 
             if (matchedLinePrimiSpecial 
                 && lineIndex > 5
@@ -86,7 +86,7 @@ function parser(menuSource, renderer = 'text') {
                 primiBlockStartRow = 9999;
             }
 
-            let matchedLineSecondiSpecial = line.match(/^[^\w]+([A-Z ,]+)EURO ([\d,]+)$/);
+            let matchedLineSecondiSpecial = line.match(/^[^\w ]+([A-Z ,]+) EURO ([\d,]+)[^\w]*$/);
             if (matchedLineSecondiSpecial 
                 && lineIndex > blocks.secondi.startIndex) {
                     

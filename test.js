@@ -7,6 +7,29 @@ chalk = require('chalk');
 
 menus = [
     {
+        filename: './sampleMenu/menu-181018.txt',
+        expected: `🎡🎡 MENÙ DI GIOVEDÌ 18 OTTOBRE 🎡🎡
+ *** PRIMI ***
+- TAGLIATELLE AL RAGÙ BIANCO: 6,20
+- MINESTRONE DI VERDURE: 6,20
+- RISOTTO “SMERALDO” CON CREMA DI SPINACI E PANCETTA: 6,20
+- MACCHERONI CON POMODORINI E PESTO: 6,20
+Penne al pomodoro e basilico: 5,20
+Orzo con verdure miste e scamorza: 5,20
+ *** SECONDI ***
+FOCACCIA ARTIGIANALE DI FARINE INTEGRALI BIO, DA FARCIRE A VOSTRO PIACERE: 7,00
+Cotoletta impanata: 7,20
+Petto di pollo alla griglia: 7,20
+Polpette con pecorino, parmigiano, uova e pomodoro: 7,20
+Frittata con broccoli e parmigiano: 7,20
+Torta salata con zucchine, funghi, prosciutto cotto e scamorza: 7,20
+ *** DOLCI ***
+Torta oreo: 4,20
+Torta rocher: 4,20
+Torta vegana con mele e lamponi: 4,20
+Macedonia: 4,20`
+    },
+    {
         filename: './sampleMenu/menu-181015.txt',
         expected: `🎡 MENÙ DI LUNEDÌ 15 OTTOBRE 🎠
  *** PRIMI ***
@@ -57,6 +80,7 @@ Macedonia: 4,20`
 Fusilli al pomodoro e basilico: 5,20
 Orzo con olive, tonno, peperoni e pomodorini: 5,20
  *** SECONDI ***
+FOCACCIA ARTIGIANALE DI FARINE INTEGRALI BIO DA FARCIRE A VOSTRO PIACERE: 7,00
 Petto di pollo alla griglia: 7,20
 Roast-beef all’inglese: 7,20
 Torta salata con prosciutto cotto, spinaci e mozzarella: 7,20
