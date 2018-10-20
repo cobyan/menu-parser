@@ -12,11 +12,14 @@ const menuTestData = require('./menu-test-data');
 
 let failed = 0, passed = 0;
 
-menuTestData.map (test => {
+menuTestData
+  /*.splice(13).*/
+  .map (test => {
   //    let one = parser(menu.filename);
 
   const date = test.date;
   const menu = Menu.create (source (date), parser, 'text');
+
   let one = menu.parsed;
 
   let other = test.expected;

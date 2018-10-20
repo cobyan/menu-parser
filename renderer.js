@@ -4,8 +4,8 @@ const rendererMd = require('./renderer-md')
 const rendererText = require('./renderer-text')
 
 const Renderer = {
-  text: (values) => { console.log('rendering text'); return rendererText(values); },
-  md: (values) => {console.log('rendering md'); return rendererMd(values); }
+  text: (values) => rendererText(values),
+  md: (values) => rendererMd(values),
 }
 
 module.exports = Renderer;
