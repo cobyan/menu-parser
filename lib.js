@@ -1,4 +1,5 @@
 function parser(menuSource, renderer = 'text') {
+/*
     const fs = require('fs');
 
     let menuRaw;
@@ -8,8 +9,10 @@ function parser(menuSource, renderer = 'text') {
         console.log('Menu not found');
         return;
     }
-
-    menuLines = menuRaw.split("\n");
+*/
+  const menuRaw = menuSource;
+  
+    const menuLines = menuRaw.split("\n");
     const defaultPrimiPrice = '5,20';
     const defaultSecondiPrice = '7,20';
     const defaultDolcePrice = '4,20';

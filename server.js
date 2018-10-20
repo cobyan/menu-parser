@@ -3,7 +3,14 @@
 
 // init project
 const express = require('express');
+const bodyParser = require("body-parser");
+
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.raw());
+
+const Database = require('./database');
+const Menu = require('./menu');
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -14,6 +21,17 @@ app.use(express.static('public'));
 // http://expressjs.com/en/starter/basic-routing.html
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/views/index.html');
+});
+
+
+app.post('/', function(request,response) {
+  console.log('parsing new email...');
+
+  const menu = Menu.create(Object.keys(request.body)[0]);  
+  
+  Database.save(menu);
+  response.send(menu);
+  console.log('done');
 });
 
 // listen for requests :)
