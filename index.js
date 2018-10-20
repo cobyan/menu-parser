@@ -30,7 +30,7 @@ if (!validateParamDate(date)) {
     return;
 }
 
-parser = require('./lib');
+parser = require('./parser');
 const formattedMenu = parser('./sampleMenu/menu-' + date + '.txt', program.format);
 if(formattedMenu) {
     console.log(formattedMenu);

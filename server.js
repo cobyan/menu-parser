@@ -11,6 +11,7 @@ app.use(bodyParser.raw());
 
 const Database = require('./database');
 const Menu = require('./menu');
+const parser = require('./parser');
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -27,7 +28,8 @@ app.get('/', function(request, response) {
 app.post('/', function(request,response) {
   console.log('parsing new email...');
 
-  const menu = Menu.create(Object.keys(request.body)[0]);  
+  const source = Object.keys(request.body)[0];
+  const menu = Menu.create(source, parser);
   
   Database.save(menu);
   response.send(menu);

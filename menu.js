@@ -1,10 +1,9 @@
-const parser = require('./lib');
 const Datecode = require('./datecode');
 const assert = require('assert');
 
 const menus = {
 // parse menu
-  create: (from) => {
+  create: (from, parser) => {
     return {
       raw: from,
       parsed: parser(from),
