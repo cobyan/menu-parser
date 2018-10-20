@@ -1,5 +1,6 @@
-function parser(menuSource, renderer = 'text') {
+const rend = require('./renderer');
 
+function parser(menuSource, format = 'text') {
     if (!menuSource) return 'Undefined menu source';
 
     const menuRaw = menuSource;
@@ -120,55 +121,8 @@ function parser(menuSource, renderer = 'text') {
     const menu = {
         date: orderDate[2].trim()
     }
-
-    if (renderer == 'text') {
-        out = `${orderDate[0].trim()}\n\n`;
-        out += " *** PRIMI ***\n\n";
-        out += primi.join("\n");
-        out += "\n\n *** SECONDI ***\n\n";
-        out += secondi.join("\n");
-        out += "\n\n *** DOLCI ***\n\n";
-        out += dolci.join("\n");
-
-    } else if(renderer == 'md') {
-
-        const marked = require('marked');
-        const TerminalRenderer = require('marked-terminal');
-        
-        marked.setOptions({
-        // Define custom renderer
-        renderer: new TerminalRenderer()
-        });
-
-
-
-        out = `# BAR MILANO #
-#### MENU DI ${menu.date} ####
-
----
-### *PRIMI*
-${primi.map(i => {
-    const d = i.replace('- ','');
-    return `- ${d}\n`;
-}).join('\n')}
-
----
-### *SECONDI*
-${secondi.map(i => {
-    i.replace('-','');
-    return `- ${i}\n`;
-}).join('\n')}
-    
----
-### *DOLCI*
-${dolci.map(i => {
-    i.replace('-','');
-    return `- ${i}\n`;
-}).join('\n')}`;
-
-        out = marked(out);
-    }
-    return out;
+    format = format || 'text';
+    return rend[format]({date: menu.date, primi, secondi, dolci});
 }
 
 module.exports = parser;

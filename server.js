@@ -29,6 +29,7 @@ app.post('/', function(request,response) {
   console.log('parsing new email...');
 
   const source = Object.keys(request.body)[0];
+  
   const menu = Menu.create(source, parser);
   
   Database.save(menu);

@@ -6,7 +6,7 @@ const menus = {
   create: (from, parser, format = null) => {
     return {
       raw: from,
-      parsed: parser(from, format),
+      parsed: { text: parser(from, 'text'), md: parser(from, 'md') },
       datecode: Datecode.now(),
     }
   },
