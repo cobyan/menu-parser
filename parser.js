@@ -1,6 +1,6 @@
 function parser(menuSource, renderer = 'text') {
 
-    if (!menuSource) return;
+    if (!menuSource) return 'Undefined menu source';
 
     const menuRaw = menuSource;
   
