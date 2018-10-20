@@ -3,10 +3,10 @@ const assert = require('assert');
 
 const menus = {
 // parse menu
-  create: (from, parser) => {
+  create: (from, parser, format = null) => {
     return {
       raw: from,
-      parsed: parser(from),
+      parsed: parser(from, format),
       datecode: Datecode.now(),
     }
   },

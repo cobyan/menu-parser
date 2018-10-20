@@ -1,16 +1,8 @@
 function parser(menuSource, renderer = 'text') {
-/*
-    const fs = require('fs');
 
-    let menuRaw;
-    try {
-        menuRaw = fs.readFileSync(menuSource, {encoding: 'utf8'});
-    } catch(e) {
-        console.log('Menu not found');
-        return;
-    }
-*/
-  const menuRaw = menuSource;
+    if (!menuSource) return;
+
+    const menuRaw = menuSource;
   
     const menuLines = menuRaw.split("\n");
     const defaultPrimiPrice = '5,20';
@@ -172,7 +164,7 @@ ${secondi.map(i => {
 ${dolci.map(i => {
     i.replace('-','');
     return `- ${i}\n`;
-}).join('\n')}`
+}).join('\n')}`;
 
         out = marked(out);
     }
