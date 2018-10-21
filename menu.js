@@ -16,6 +16,8 @@ const menus = {
       datecode: Datecode.now(),
     }
   },
+
+  compare: (one, other) => jsdiff.diffChars(one, other),
   
   insert: (data, db, callback) => {
     // Get the documents collection
