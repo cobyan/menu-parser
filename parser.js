@@ -119,7 +119,7 @@ function parser(menuSource, format = 'text') {
     });
 
     const menu = {
-        date: orderDate[2].trim()
+        date: orderDate[0].trim()
     }
     format = format || 'text';
     return rend[format]({date: menu.date, primi, secondi, dolci});
