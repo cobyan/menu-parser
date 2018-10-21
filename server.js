@@ -26,15 +26,13 @@ app.get('/', function(request, response) {
 
 
 app.post('/', function(request,response) {
-  console.log('parsing new email...');
-
   const source = Object.keys(request.body)[0];
   
   const menu = Menu.create(source, parser);
   
   Database.save(menu);
   response.send(menu);
-  console.log('done');
+  
 });
 
 // listen for requests :)

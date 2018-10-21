@@ -4,9 +4,15 @@ const assert = require('assert');
 const menus = {
 // parse menu
   create: (from, parser, format = null) => {
+    let parsedFormats;
+    if (format) {
+      parsedFormats = parser(from, format);
+    } else {
+      parsedFormats = { text: parser(from, 'text'), md: parser(from, 'md') };
+    }
     return {
       raw: from,
-      parsed: { text: parser(from, 'text'), md: parser(from, 'md') },
+      parsed: parsedFormats,
       datecode: Datecode.now(),
     }
   },
