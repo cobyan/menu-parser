@@ -13,6 +13,8 @@ const Database = require('./database');
 const Menu = require('./menu');
 const parser = require('./parser');
 
+const source = require ('./filemenusource');
+
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
 
@@ -24,6 +26,11 @@ app.get('/', function(request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+app.get('/menu/:datecode(\\d{6,6})', function(req, res) {
+  console.log(req.params);
+  const menu = Menu.create(source(req.params.datecode), parser, 'text');
+  res.send(menu.parsed);
+});
 
 app.post('/', function(request,response) {
   const source = Object.keys(request.body)[0];
