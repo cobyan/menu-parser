@@ -381,6 +381,32 @@ Torta Rocher: 4,20
 Torta vegana con mele e lamponi: 4,20
 Macedonia: 4,20`,
   },
+  {
+    date: '181022',
+    expected: `🎠🎠🎠 MENÙ DI LUNEDÌ 22 OTTOBRE 🎡🎡🎡
+
+ *** PRIMI ***
+
+- TROFIE CON PESTO (no aglio),: 6,20
+- ZUPPA DI CANNELLINI: 6,20
+- RISOTTO CON ZOLA E NOCI: 6,20
+- SPAGHETTI ALLA CARBONARA: 6,20
+Maccheroni al pomodoro e basilico: 5,20
+Orzo con melanzane, zucchine e peperoni: 5,20
+
+ *** SECONDI ***
+
+Petto di pollo alla griglia: 7,20
+Scaloppine al vino bianco: 7,20
+Melanzane impanate farcite con fontina e prosciutto cotto: 7,20
+Frittata con verdure miste e parmigiano: 7,20
+Torta salata con spinaci e parmigiano: 7,20
+Omelettes con spinaci e mozzarella: 7,20
+
+ *** DOLCI ***
+
+Macedonia: 4,20`
+  }
 ];
 
 module.exports = menus;
