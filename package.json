@@ -19,15 +19,16 @@
     "node": "8.x"
   },
   "dependencies": {
-    "express": "^4.16.4",
+    "assert": "*",
     "body-parser": "^1.18.3",
     "colors": "^1.3.2",
     "commander": "^2.19.0",
     "diff": "^3.5.0",
+    "express": "^4.16.4",
+    "googleapis": "^27.0.0",
     "marked": "^0.5.1",
     "marked-terminal": "^3.1.1",
-    "mongodb": "*",
-    "assert": "*"
+    "mongodb": "*"
   },
   "devDependencies": {
     "chalk": "^2.4.1",
