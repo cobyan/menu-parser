@@ -68,7 +68,7 @@ function printString(auth) {
 
     let values = [
         [
-          'ciao'
+            '🍇 MENÙ DI MARTEDÌ 23 OTTOBRE 🍇'
         ],
         // Additional rows ...
       ];
@@ -77,9 +77,44 @@ function printString(auth) {
       };
       sheets.spreadsheets.values.update({
         spreadsheetId: '1_eCayZ854K9kJzqpyfY02idrO7DWVMjpu6ijuZQq9_U',
-        range: 'Foglio2!H1',
+        range: 'Foglio2!J2:L4',
         valueInputOption: 'USER_ENTERED',
         resource,
+      }, (err, result) => {
+        if (err) {
+          // Handle error
+          console.log(err);
+        } else {
+          console.log('%d cells updated.', result.updatedCells);
+        }
+      });
+
+      values = [
+          [
+            '1- MINESTRONE DI VERDURE FRESCHE',null,'15'
+          ],
+          [
+            '2- MINESTRONE DI VERDURE FRESCHE',null,'25'
+          ],
+          [
+            ''
+          ],
+          [
+            'SECONDI','',''
+          ],
+          
+
+        
+        // Additional rows ...
+      ];
+      const resource2 = {
+        values,
+      };
+      sheets.spreadsheets.values.update({
+        spreadsheetId: '1_eCayZ854K9kJzqpyfY02idrO7DWVMjpu6ijuZQq9_U',
+        range: 'Foglio2!J10:L20',
+        valueInputOption: 'USER_ENTERED',
+        resource: resource2,
       }, (err, result) => {
         if (err) {
           // Handle error
