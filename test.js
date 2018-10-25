@@ -5,7 +5,7 @@ parser = require ('./parser');
 chalk = require ('chalk');
 
 const Menu = require ('./menu');
-const source = require ('./filemenusource');
+const source = require ('./menu-source-file');
 const Datecode = require('./datecode');
 const menuTestData = require('./menu-test-data');
 

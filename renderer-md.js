@@ -9,7 +9,7 @@ const RendererMd = (values) => {
         });
 
         let out = `# BAR MILANO #
-#### ${values.date} ####
+#### ${values.header} ####
 
 ---
 ### *PRIMI*
