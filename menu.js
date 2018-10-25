@@ -10,6 +10,7 @@ const menus = {
     } else {
       parsedFormats = { text: parser(from, 'text'), md: parser(from, 'md') };
     }
+    
     return {
       raw: from,
       parsed: parsedFormats,
