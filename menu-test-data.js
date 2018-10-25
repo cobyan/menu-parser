@@ -1,6 +1,6 @@
 const menus = [
   {
-    date: '181018',
+    datecode: '181018',
     expected: `🎡🎡 MENÙ DI GIOVEDÌ 18 OTTOBRE 🎡🎡
 
  *** PRIMI ***
@@ -29,7 +29,7 @@ Torta vegana con mele e lamponi: 4,20
 Macedonia: 4,20`,
   },
   {
-    date: '181015',
+    datecode: '181015',
     expected: `🎡 MENÙ DI LUNEDÌ 15 OTTOBRE 🎠
 
  *** PRIMI ***
@@ -55,7 +55,7 @@ Omelettes con spinaci e mozzarella: 7,20
 Macedonia: 4,20`,
   },
   {
-    date: '181012',
+    datecode: '181012',
     expected: `🤗 MENÙ DI VENERDÌ 12 OTTOBRE 🤗
 
  *** PRIMI ***
@@ -81,7 +81,7 @@ Torta salata con verdure miste, mozzarella e parmigiano: 7,20
 Macedonia: 4,20`,
   },
   {
-    date: '181011',
+    datecode: '181011',
     expected: `MENÙ DI GIOVEDÌ 11 OTTOBRE
 
  *** PRIMI ***
@@ -109,7 +109,7 @@ Cheescake all’oreo: 4,20
 Macedonia: 4,20`,
   },
   {
-    date: '181010',
+    datecode: '181010',
     expected: `🍔 MENÙ DI MERCOLEDÌ 10 OTTOBRE 🍔
 
  *** PRIMI ***
@@ -140,7 +140,7 @@ Cheescake all’oreo: 4,20
 Macedonia: 4,20`,
   },
   {
-    date: '181009',
+    datecode: '181009',
     expected: `MENÙ DI MARTEDÌ 9 OTTOBRE
 
  *** PRIMI ***
@@ -169,7 +169,7 @@ Torta di mele: 4,20
 Macedonia: 4,20`,
   },
   {
-    date: '181008',
+    datecode: '181008',
     expected: `🍒 MENÙ DI LUNEDÌ 8 OTTOBRE 🍒
 
  *** PRIMI ***
@@ -195,7 +195,7 @@ Frittata con spinaci e parmigiano: 7,20
 Macedonia: 4,20`,
   },
   {
-    date: '181005',
+    datecode: '181005',
     expected: `🦐 MENÙ DI VENERDÌ 5 OTTOBRE 🦐
 
  *** PRIMI ***
@@ -221,7 +221,7 @@ Frittata con spinaci e parmigiano: 7,20
 Macedonia: 4,20`,
   },
   {
-    date: '181004',
+    datecode: '181004',
     expected: `🎃 MENÙ DI GIOVEDÌ 4 OTTOBRE 🎃
 
  *** PRIMI ***
@@ -247,7 +247,7 @@ Torta salata con carciofi, zucchine, prosciutto cotto, mozzarella e brie: 7,20
 Macedonia: 4,20`,
   },
   {
-    date: '181003',
+    datecode: '181003',
     expected: `🍅 MENÙ DI MERCOLEDÌ 3 OTTOBRE 🍅
 
  *** PRIMI ***
@@ -272,7 +272,7 @@ Frittata con spinaci e formaggio: 7,20
 Macedonia: 4,20`,
   },
   {
-    date: '181002',
+    datecode: '181002',
     expected: `🌰 MENÙ DI MARTEDÌ 2 OTTOBRE 🌰
 
  *** PRIMI ***
@@ -298,7 +298,7 @@ Frittata con carciofi e parmigiano: 7,20
 Macedonia: 4,20`,
   },
   {
-    date: '181001',
+    datecode: '181001',
     expected: `☔️ MENÙ DI LUNEDÌ 1 OTTOBRE ☔️
 
  *** PRIMI ***
@@ -325,7 +325,7 @@ Omelettes con carciofi, mozzarella e prosciutto cotto: 7,20
 Macedonia: 4,20`,
   },
   {
-    date: '181017',
+    datecode: '181017',
     expected: `🎡🎃 MENÙ DI MERCOLEDÌ 17 OTTOBRE 🎃🎡
 
  *** PRIMI ***
@@ -354,7 +354,7 @@ Torta Vegana con mele e lamponi: 4,20
 Macedonia: 4,20`,
   },
   {
-    date: '181019',
+    datecode: '181019',
     expected: `🎡🎠 MENÙ DI VENERDÌ 19 OTTOBRE 🎡🎠
 
  *** PRIMI ***
@@ -382,7 +382,7 @@ Torta vegana con mele e lamponi: 4,20
 Macedonia: 4,20`,
   },
   {
-    date: '181022',
+    datecode: '181022',
     expected: `🎠🎠🎠 MENÙ DI LUNEDÌ 22 OTTOBRE 🎡🎡🎡
 
  *** PRIMI ***

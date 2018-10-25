@@ -5,18 +5,19 @@ parser = require ('./parser');
 chalk = require ('chalk');
 
 const Menu = require ('./menu');
-const source = require ('./menu-source-file');
+const sourceFileDatecode = require ('./menu-source-file');
+
 const Datecode = require('./datecode');
 const menuTestData = require('./menu-test-data');
 
 let failed = 0, passed = 0;
 
 menuTestData
-  .map (testq => {
+  .map (td => {
 
-  const menu = Menu.create(source(testq.date), parser, 'text');
+  const menu = Menu.create(sourceFileDatecode(td.datecode), parser, 'text');
   
-  const diff = Menu.compare(testq.expected, menu.parsed);
+  const diff = Menu.compare(td.expected, menu.parsed);
   try {
     test('menu should be equal', () => {
       expect(diff.length).toBe(1);  
@@ -26,7 +27,7 @@ menuTestData
   }
 
   console.log (
-    chalk[diff.length === 1 ? 'green' : 'red'] (Datecode.toFilename (testq.date))
+    chalk[diff.length === 1 ? 'green' : 'red'] (Datecode.toFilename (td.datecode))
   );
 
   if (diff.length > 1) {
