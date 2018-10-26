@@ -11,7 +11,7 @@
   },
   "bin": {
     "menu": "./index.js",
-    "menu-test": "./test.js"
+    "menu-test": "./tests/run-sample.js"
   },
   "author": "",
   "license": "ISC",
