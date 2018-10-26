@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 const program = require('commander');
-const Datecode = require('./datecode');
-const parser = require('./parser');
-const Menu = require('./menu');
-const source = require('./filemenusource');
+const Datecode = require('./lib/datecode');
+const parser = require('./lib/parser');
+const Menu = require('./lib/menu/menu');
+const source = require('./lib/menu/menu-source-file');
 
 program
   .version('0.2.0', '-v, --version')

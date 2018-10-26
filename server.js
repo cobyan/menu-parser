@@ -9,9 +9,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.raw());
 
-const Database = require('./database');
-const Menu = require('./menu');
-const parser = require('./parser');
+const Database = require('./lib/database');
+const Menu = require('./lib/menu');
+const parser = require('./lib/parser');
 const sourceFileDatecode = require ('./menu-source-file');
 const sourceRequest = require('./menu-source-request');
 
