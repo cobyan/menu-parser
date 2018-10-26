@@ -12,8 +12,8 @@ app.use(bodyParser.raw());
 const Database = require('./database');
 const Menu = require('./menu');
 const parser = require('./parser');
-
-const source = require ('./filemenusource');
+const sourceFileDatecode = require ('./menu-source-file');
+const sourceRequest = require('./menu-source-request');
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -28,15 +28,25 @@ app.get('/', function(request, response) {
 
 app.get('/menu/:datecode(\\d{6,6})', function(req, res) {
   console.log(req.params);
-  const menu = Menu.create(source(req.params.datecode), parser, 'text');
+  const menu = Menu.create(sourceFileDatecode(req.params.datecode), parser, 'text');
   res.send(menu.parsed);
 });
 
+app.get('/gsheets', function(req, res) {
+  const g = require('./quickstart-gsheets');
+});
 app.post('/', function(request,response) {
-  const source = Object.keys(request.body)[0];
+  
+  let source;
+  
+  try {
+    source = sourceRequest(request);
+  } catch(e) {
+    response.status(400).send(e.message);
+    return;
+  }
   
   const menu = Menu.create(source, parser);
-  
   Database.save(menu);
   response.send(menu);
   

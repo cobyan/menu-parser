@@ -77,7 +77,7 @@ function printString(auth) {
       };
       sheets.spreadsheets.values.update({
         spreadsheetId: '1_eCayZ854K9kJzqpyfY02idrO7DWVMjpu6ijuZQq9_U',
-        range: 'Foglio2!J2:L4',
+        range: 'Foglio2!I2:M4',
         valueInputOption: 'USER_ENTERED',
         resource,
       }, (err, result) => {
