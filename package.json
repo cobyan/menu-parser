@@ -11,7 +11,7 @@
   },
   "bin": {
     "menu": "./index.js",
-    "menu-test": "./tests/run-sample.js"
+    "menu-test": "./run-sample.js"
   },
   "author": "",
   "license": "ISC",
@@ -34,5 +34,15 @@
     "chalk": "^2.4.1",
     "jest": "^23.6.0"
   },
-  "description": ""
+  "description": "",
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!coverage/**",
+      "!public/**",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ]
+  }
 }
