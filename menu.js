@@ -1,20 +1,34 @@
 const Datecode = require('./datecode');
+const rend = require('./renderer');
+
 const assert = require('assert');
 
 const menus = {
 // parse menu
-  create: (from, parser, format = null) => {
+  parse: (from, parser, format = null) => {
     let parsedFormats;
+    const parsed = parser(from);
     if (format) {
-      parsedFormats = parser(from, format);
+      
+      parsedFormats = rend[format](parsed);
     } else {
-      parsedFormats = { text: parser(from, 'text'), md: parser(from, 'md') };
+      parsedFormats = { 
+        text: rend[format](parsed), 
+        md: rend[format](parsed) 
+      }
     }
-    
+    let datecode = parsed.datecode;
+    return {datecode, parsed: parsedFormats};
+  },
+
+  create: (from, parser, format = null) => {
+
+    const parsedMenu = menus.parse(from, parser, format);
+        
     return {
       raw: from,
-      parsed: parsedFormats,
-      datecode: Datecode.now(),
+      parsed: parsedMenu.parsed,
+      datecode: parsedMenu.datecode
     }
   },
 

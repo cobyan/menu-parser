@@ -1,4 +1,4 @@
-const rend = require('./renderer');
+const Datecode = require('./datecode');
 
 function parser(menuSource, format = 'text') {
     if (!menuSource) return 'Undefined menu source';
@@ -118,11 +118,18 @@ function parser(menuSource, format = 'text') {
             }
     });
 
-    const menu = {
-        date: orderDate[0].trim()
+    const datecode = Datecode.fromLongDate(orderDate[2].trim());
+    const header = orderDate[0].trim();
+    return {
+        header,
+        datecode,
+        primi,
+        secondi,
+        dolci
     }
-    format = format || 'text';
-    return rend[format]({date: menu.date, primi, secondi, dolci});
+    //format = format || 'text';
+    //return rend[format]({date: menu.date, primi, secondi, dolci});
+    //return {datecode: menu.datecode, primi, secondi, dolci};
 }
 
 module.exports = parser;

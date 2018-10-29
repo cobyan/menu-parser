@@ -3,14 +3,14 @@ const readline = require('readline');
 const {google} = require('googleapis');
 
 // If modifying these scopes, delete token.json.
-const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 const TOKEN_PATH = 'token.json';
 
 // Load client secrets from a local file.
 fs.readFile('credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Sheets API.
-  authorize(JSON.parse(content), listMajors);
+  authorize(JSON.parse(content), printString);
 });
 
 /**
@@ -63,6 +63,68 @@ function getNewToken(oAuth2Client, callback) {
   });
 }
 
+function printString(auth) {
+    const sheets = google.sheets({version: 'v4', auth});
+
+    let values = [
+        [
+            '🍇 MENÙ DI MARTEDÌ 23 OTTOBRE 🍇'
+        ],
+        // Additional rows ...
+      ];
+      const resource = {
+        values,
+      };
+      sheets.spreadsheets.values.update({
+        spreadsheetId: '1_eCayZ854K9kJzqpyfY02idrO7DWVMjpu6ijuZQq9_U',
+        range: 'Foglio2!I2:M4',
+        valueInputOption: 'USER_ENTERED',
+        resource,
+      }, (err, result) => {
+        if (err) {
+          // Handle error
+          console.log(err);
+        } else {
+          console.log('%d cells updated.', result.updatedCells);
+        }
+      });
+
+      values = [
+          [
+            '1- MINESTRONE DI VERDURE FRESCHE',null,'15'
+          ],
+          [
+            '2- MINESTRONE DI VERDURE FRESCHE',null,'25'
+          ],
+          [
+            ''
+          ],
+          [
+            'SECONDI','',''
+          ],
+          
+
+        
+        // Additional rows ...
+      ];
+      const resource2 = {
+        values,
+      };
+      sheets.spreadsheets.values.update({
+        spreadsheetId: '1_eCayZ854K9kJzqpyfY02idrO7DWVMjpu6ijuZQq9_U',
+        range: 'Foglio2!J10:L20',
+        valueInputOption: 'USER_ENTERED',
+        resource: resource2,
+      }, (err, result) => {
+        if (err) {
+          // Handle error
+          console.log(err);
+        } else {
+          console.log('%d cells updated.', result.updatedCells);
+        }
+      });
+}
+
 /**
  * Prints the names and majors of students in a sample spreadsheet:
  * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
@@ -70,6 +132,7 @@ function getNewToken(oAuth2Client, callback) {
  */
 function listMajors(auth) {
   const sheets = google.sheets({version: 'v4', auth});
+  /*
   sheets.spreadsheets.values.get({
     spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
     range: 'Class Data!A2:E',
@@ -86,4 +149,5 @@ function listMajors(auth) {
       console.log('No data found.');
     }
   });
+  */
 }
