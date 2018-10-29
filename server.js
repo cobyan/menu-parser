@@ -10,10 +10,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.raw());
 
 const Database = require('./lib/database');
-const Menu = require('./lib/menu');
+const Menu = require('./lib/menu/menu');
 const parser = require('./lib/parser');
-const sourceFileDatecode = require ('./menu-source-file');
-const sourceRequest = require('./menu-source-request');
+const sourceFileDatecode = require ('./lib/menu/menu-source-file');
+const sourceRequest = require('./lib/menu/menu-source-request');
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
