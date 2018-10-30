@@ -11,6 +11,7 @@
   },
   "bin": {
     "menu": "./index.js",
+    "menu-new": "./editor.js",
     "menu-test": "./run-sample.js"
   },
   "author": "",
