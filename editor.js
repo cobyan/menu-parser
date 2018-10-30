@@ -6,9 +6,10 @@ const Datecode = require('./lib/datecode');
 const Menu = require('./lib/menu/menu');
 const source = require('./lib/menu/menu-source-file');
 const parser = require('./lib/parser');
+const chalk = require ('chalk');
 
 const editor = process.env.EDITOR || 'vi';
-const datecode = '191010' || Datecode.now(); console.log(datecode);
+const datecode = Datecode.now();
 
 const menuFileRelPath = Datecode.filePath(datecode);
 
@@ -17,10 +18,16 @@ var child = child_process.spawn(editor, [menuFileRelPath], {
 });
 
 child.on('exit', function (e, code) {
+    let menu;
+    try{
+        menu = Menu.create(source(menuFileRelPath), parser);
+    } catch(e) {
+        console.log(chalk.grey('No new menu'));
+        return;
+    }
 
-    const menu = Menu.create(source(menuFileRelPath), parser);
 
     fs.writeFileSync(menuFileRelPath + '.out', menu.parsed.text, 'utf8');
 
-    console.log("finished");
+    console.log(chalk.green("✔ sample menu "+datecode+" created"));
 });
