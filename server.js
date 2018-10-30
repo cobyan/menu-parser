@@ -21,13 +21,17 @@ const sourceRequest = require('./lib/menu/menu-source-request');
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
+const config = {
+  useDb: false
+}
+
+
 // http://expressjs.com/en/starter/basic-routing.html
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
 app.get('/menu/:datecode(\\d{6,6})', function(req, res) {
-  console.log(req.params);
   const menu = Menu.create(sourceFileDatecode(req.params.datecode), parser, 'text');
   res.send(menu.parsed);
 });
@@ -47,7 +51,7 @@ app.post('/', function(request,response) {
   }
   
   const menu = Menu.create(source, parser);
-  Database.save(menu);
+  config.useDb && Database.save(menu);
   response.send(menu);
   
 });
