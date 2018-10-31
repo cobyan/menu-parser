@@ -10,10 +10,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.raw());
 
 const Database = require('./lib/database');
-const Menu = require('./lib/menu');
+const Menu = require('./lib/menu/menu');
 const parser = require('./lib/parser');
-const sourceFileDatecode = require ('./menu-source-file');
-const sourceRequest = require('./menu-source-request');
+const sourceFileDatecode = require ('./lib/menu/menu-source-file');
+const sourceRequest = require('./lib/menu/menu-source-request');
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -21,13 +21,17 @@ const sourceRequest = require('./menu-source-request');
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
+const config = {
+  useDb: false
+}
+
+
 // http://expressjs.com/en/starter/basic-routing.html
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
 app.get('/menu/:datecode(\\d{6,6})', function(req, res) {
-  console.log(req.params);
   const menu = Menu.create(sourceFileDatecode(req.params.datecode), parser, 'text');
   res.send(menu.parsed);
 });
@@ -47,7 +51,7 @@ app.post('/', function(request,response) {
   }
   
   const menu = Menu.create(source, parser);
-  Database.save(menu);
+  config.useDb && Database.save(menu);
   response.send(menu);
   
 });

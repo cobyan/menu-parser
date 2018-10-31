@@ -14,12 +14,7 @@ program
 const datecode = program.args[0] || Datecode.now();
 
 const menuFileRelPath = Datecode.toFilename(datecode);
-/*
-if (!Datecode.validate(datecode)) {
-    console.log('Invalid date');
-    return;
-}
-*/
+
 const menu = Menu.create(source(menuFileRelPath), parser, program.format);
 
 if(menu.parsed) {
