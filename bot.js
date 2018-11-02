@@ -1,6 +1,6 @@
 const { IncomingWebhook, WebClient } = require('@slack/client');
 
-const cfg = require('../config');
+const cfg = require('./config');
 
 sendWebhook('Ciao webhook');
 sendMessage('Ciao message');
