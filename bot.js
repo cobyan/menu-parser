@@ -2,8 +2,8 @@ const { IncomingWebhook, WebClient } = require('@slack/client');
 
 const cfg = require('./config');
 
-sendWebhook('Ciao webhook');
-sendMessage('Ciao message');
+// sendWebhook('Ciao webhook');
+// sendMessage('Ciao message');
 
 function sendWebhook(msg) {
     
@@ -39,3 +39,5 @@ function sendMessage(msg) {
       })
       .catch(console.error);
 }
+
+module.exports = { sendWebhook, sendMessage };
