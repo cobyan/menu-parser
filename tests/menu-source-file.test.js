@@ -8,6 +8,7 @@ test('it should open sampleMenu file', () => {
 
 test('it should open only valid files', () => {
     
+    expect(() => source()).toThrow('no such file or directory');
     expect(() => source(null)).toThrow('no such file or directory');
     expect(() => source('171010')).toThrowError('no such file or directory');
     expect(() => source('aaa')).toThrow();

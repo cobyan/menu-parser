@@ -12,7 +12,6 @@ test('menu should be equal', () => {
       
       if (!file.match (/txt$/)) return;
       sample = samples.run(file);
-
       expect(sample.diff.length).toEqual(1);
     });
 
