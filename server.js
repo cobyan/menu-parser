@@ -15,6 +15,9 @@ const parser = require('./lib/parser');
 const sourceFileDatecode = require ('./lib/menu/menu-source-file');
 const sourceRequest = require('./lib/menu/menu-source-request');
 
+const writeSpreadsheet = require('./gsheet');
+const bot = require('./bot');
+
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
 
@@ -51,8 +54,17 @@ app.post('/', function(request,response) {
   }
   
   const menu = Menu.create(source, parser);
+  // 1. Save to DB
   config.useDb && Database.save(menu);
-  response.send(menu);
+
+  // 2. Update Gsheet
+  writeSpreadsheet(menu.parsed.gsheet);
+
+  // 3. notify Slack
+  bot.sendWebhook('Bar Milano menu is up');
+  
+  //response.send(menu);
+  response.send('menu posted')
   
 });
 
