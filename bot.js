@@ -1,10 +1,10 @@
 const { IncomingWebhook, WebClient } = require('@slack/client');
 
 // Webhook url
-const SLACK_WEBHOOK_URL = 'https://hooks.slack.com/services/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' || process.env.SLACK_WEBHOOK_URL;
+const SLACK_WEBHOOK_URL = 'https://hooks.slack.com/services/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' || process.env.SLACK_WEBHOOK_URL;
 
 // An access token (from your Slack app or custom integration - xoxa, xoxp, or xoxb)
-const SLACK_TOKEN = 'xoxp-442015712583-442015712727-469628069536-44eb1bec41656e802a7640f0f2e0c56d' || process.env.SLACK_TOKEN;
+const SLACK_TOKEN = 'xoxp-442015712583-442015712727-469783024289-c23b67727870f6155eeb3d46658ea3ef' || process.env.SLACK_TOKEN;
 
 sendWebhook('Ciao webhook');
 sendMessage('Ciao message');
