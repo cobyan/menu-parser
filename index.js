@@ -8,7 +8,7 @@ const source = require('./lib/menu/menu-source-file');
 program
   .version('0.2.0', '-v, --version')
   .usage('[options] [date]')
-  .option('-f, --format <format>', 'Output format (markdown or text)', /^md|text$/, 'text')
+  .option('-f, --format <format>', 'Output format (markdown or text)', /^md|text|gsheet$/, 'text')
   .parse(process.argv);
 
 const datecode = program.args[0] || Datecode.now();
