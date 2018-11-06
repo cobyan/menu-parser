@@ -1,33 +1,17 @@
 // server.js
 // where your node app starts
 
-// init project
-const express = require('express');
-const bodyParser = require("body-parser");
+const app = require('./lib/server-start');
 
-const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.raw());
-
+const Gsheet = require('./lib/gsheet');
+const Slack = require('./lib/slack');
+const Datecode = require('./lib/datecode');
 const Database = require('./lib/database');
 const Menu = require('./lib/menu/menu');
 const parser = require('./lib/parser');
 const sourceFileDatecode = require ('./lib/menu/menu-source-file');
 const sourceRequest = require('./lib/menu/menu-source-request');
-
-const writeSpreadsheet = require('./gsheet');
-const bot = require('./bot');
-
-// we've started you off with Express, 
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
-
-// http://expressjs.com/en/starter/static-files.html
-app.use(express.static('public'));
-
-const config = {
-  useDb: false
-}
-
+const config = require('./config');
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get('/', function(request, response) {
@@ -35,13 +19,10 @@ app.get('/', function(request, response) {
 });
 
 app.get('/menu/:datecode(\\d{6,6})', function(req, res) {
-  const menu = Menu.create(sourceFileDatecode(req.params.datecode), parser, 'text');
+  const menu = Menu.create(sourceFileDatecode(Datecode.toFilename(req.params.datecode)), parser, 'text');
   res.send(menu.parsed);
 });
 
-app.get('/gsheets', function(req, res) {
-  const g = require('./quickstart-gsheets');
-});
 app.post('/', function(request,response) {
   
   let source;
@@ -53,22 +34,23 @@ app.post('/', function(request,response) {
     return;
   }
   
-  const menu = Menu.create(source, parser);
+  const menu = Menu.create(source.raw, parser);
   // 1. Save to DB
   config.useDb && Database.save(menu);
 
   // 2. Update Gsheet
-  writeSpreadsheet(menu.parsed.gsheet);
+  config.useGsheet && Gsheet.write(menu.parsed.gsheet);
 
   // 3. notify Slack
-  bot.sendWebhook('Bar Milano menu is up');
+  config.useSlack && Slack.postMenu(menu.parsed.slack, 
+    'Bar Milano', 
+    'warning', 
+    config.gsheet.url);
   
+
   //response.send(menu);
   response.send('menu posted')
   
 });
 
-// listen for requests :)
-const listener = app.listen(process.env.PORT, function() {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
+

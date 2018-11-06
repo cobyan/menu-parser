@@ -7,7 +7,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "node server.js"
+    "start": "PORT=64011 node server.js"
   },
   "bin": {
     "menu": "./index.js",
@@ -30,7 +30,8 @@
     "googleapis": "^27.0.0",
     "marked": "^0.5.1",
     "marked-terminal": "^3.1.1",
-    "mongodb": "*"
+    "mongodb": "*",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "chalk": "^2.4.1",
