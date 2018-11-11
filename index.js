@@ -4,9 +4,10 @@ const Datecode = require('./lib/datecode');
 const parser = require('./lib/parser');
 const Menu = require('./lib/menu/menu');
 const source = require('./lib/menu/menu-source-file');
+const package = require('./package.json');
 
 program
-  .version('0.2.0', '-v, --version')
+  .version(package.version, '-v, --version')
   .usage('[options] [date]')
   .option('-f, --format <format>', 'Output format (markdown or text)', /^md|text|gsheet$/, 'text')
   .parse(process.argv);
