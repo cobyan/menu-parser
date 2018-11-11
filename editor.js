@@ -14,6 +14,9 @@ const datecode = Datecode.now();
 
 const menuFileRelPath = Datecode.filePath(datecode);
 
+// autostart server
+//const server = child_process.exec('npm start', function(error, stdout, stderr) {});
+
 var child = child_process.spawn(editor, [menuFileRelPath], {
     stdio: 'inherit'
 });
@@ -39,6 +42,10 @@ child.on('exit', function (e, code) {
 
 
     console.log(chalk.green("✔ sample menu "+datecode+" created"));
+//    server.unref();
+/*    server.stdout.on('data', function(data) {
+        console.log(data.toString()); 
+    });*/
 });
 /*
 var formData = {
