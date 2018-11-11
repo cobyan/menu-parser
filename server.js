@@ -35,6 +35,26 @@ app.get('/menu/:datecode(\\d{6,6})', function(req, res) {
 app.get('/gsheets', function(req, res) {
   const g = require('./quickstart-gsheets');
 });
+
+app.post('/:format', function(req,res) {
+  
+  let source;
+  
+  try {
+    source = sourceRequest(req);
+  } catch(e) {
+    res.status(400).send(e.message);
+    return;
+  }
+  console.log(source);
+  
+  const menu = Menu.create(source, parser);
+  Database.save(menu);
+  console.log(menu.parsed['md']);
+  res.send(menu.parsed[req.params.format]);
+
+});
+
 app.post('/', function(request,response) {
   
   let source;
