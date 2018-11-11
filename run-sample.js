@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const chalk = require ('chalk');
-const fs = require('fs');
+require('colors');
 
 const samples = require('./lib/samples');
 
